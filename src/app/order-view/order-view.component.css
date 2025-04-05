@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+.dialog-content{
+    height: 100%;
+    width: 100%;
+    /* background: #f4f4f4; */
+    background: var(--empty-color);
+    overflow: hidden;
+}
+.title{
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 5%;
+}
+.close-btn{
+    cursor: pointer;
+}
+.title p{
+    font-size: 14px;
+}
+
+.product-grid{
+    width: 100%;
+    height: 80%;
+   overflow: auto;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.grid-container{
+    height: auto;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 45% 45%;
+    grid-gap: 10px;
+    overflow: auto;
+    padding-bottom: 40px;
+}
+.product-content{
+    width: 100%;
+    height: 260px;
+    background: #fefefe;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+overflow: hidden;
+border-radius: 10px;
+}
+.img{
+    width: 100%;
+    height: 65%;
+}
+.img img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.product-detail{
+    height: 35%;
+    
+}
+.top{
+    display: flex;
+    justify-content: center;
+}
+.middle, .final{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4px;
+    font-size: 14px;
+}
+.final{
+    align-items: center;
+}
+.delete-icon{
+    color: #eb1600;
+    font-size: 20px;
+    cursor: pointer;
+}
+.elsecontent{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+}
+.footer{
+    height: 10%;
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.submit-btn{
+    background: #eb1600;
+    color: white;
+    font-size: 14px;
+    height: 100%;
+    width: 40%;
+    display: flex
+;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    align-items: center;
+    position: relative;
+    left: 55%;
+}
+@media(max-width:420px){
+    .grid-container{
+        height: auto;
+        width: 100%;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 75%;
+        grid-gap: 10px;
+        overflow: auto;
+        padding-bottom: 40px;
+    }
+}

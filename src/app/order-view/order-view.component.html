@@ -1,0 +1,72 @@
+<div class="dialog-content">
+    <div class="title">
+       
+        <div>View Cart</div>
+        <i class="fa fa-times close-btn" (click)="close()" aria-hidden="true"></i>
+    </div>
+    <!-- <div class="img-detail">
+        <div class="img">
+            <img [src]="this.img">
+        </div>
+        <div class="content">
+            <p>Item: {{name}}</p>
+            <p>Price: {{price}}</p>
+            <div class="input-group">
+                <button id="decrement" class="decrement-button" (click)="decrement()">-</button>
+                <div class="innercontent">
+                    {{quantity}}
+                </div>
+                <button id="increment" class="increment-button" (click)="increment()">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="total">
+        <div class="total-part">
+            <div class="price-label">Total price:</div>
+            <div class="total-price">${{this.totalprice}}</div>
+        </div>
+        <div class="submit-btn">
+
+            <div class="btn">Place order</div>
+        </div>
+    </div> -->
+<div class="product-grid" *ngIf="this.totalorder.length>0; else other_content">
+ <div class="grid-container" >
+    <div class="product-content" *ngFor="let product of this.totalorder">
+<div class="img"><img [src]="product.img"></div>
+<div class="product-detail">
+   <div class="top">
+    <h6>{{product.name}}</h6>
+   </div>
+    <div class="middle">
+        <p>quantity:{{product.quantity}}</p>
+        <p>price:₹{{product.price}}</p>
+    </div>
+    <div class="final">
+        <p>Total:₹{{product.totalprice}}</p>
+        <i class="fa fa-trash delete-icon" aria-hidden="true" (click)="deleteitem(product.id)"></i>
+    </div>
+    
+    
+    
+    
+</div>
+    </div>
+ 
+ </div>
+
+ 
+
+</div>
+<div class="footer">
+    <div class="submit-btn" (click)="placeorder()" >
+         Order (₹{{totalrate}})
+    </div>
+</div>
+
+<ng-template #other_content>
+    <div class="elsecontent">
+       <h5>Please add the item in the cart</h5>
+    </div>
+</ng-template>
+</div>

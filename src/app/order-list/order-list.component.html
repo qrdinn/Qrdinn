@@ -1,0 +1,181 @@
+<div class="body-total">
+    <div class="carousel">
+
+        <!-- data-bs-ride="carousel" -->
+        <div id="carouselExampleRide" class="carousel slide  h-100 d-flex justify-content-center"
+            data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active "
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner carousel_content h-100 w-75 ">
+                <div class="carousel-item h-100 w-100  active">
+                    <div class="carousel_content h-100 d-flex justify-content-around align-items-center">
+                        <div class="content">
+                            <p style="color: white;">Make your World Juicy</p>
+
+                        </div>
+                        <div class="img-content">
+                            <img src="../assets/Burger.png" class="h-100 w-100">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item h-100 w-100">
+                    <div class="carousel_content h-100 d-flex justify-content-around align-items-center">
+                        <div class="content">
+                            <p style="color: white;">Make your taste with Spicy and sticky withyour delicy sause</p>
+
+                        </div>
+                        <div class="img-content">
+                            <img src="../assets/frenchfries.png" class="h-100 w-100">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item h-100 w-100">
+                    <div class="carousel_content h-100 d-flex justify-content-around align-items-center">
+                        <div class="content">
+                            <p style="color: white;">Make your enjoy with different flavours</p>
+
+                        </div>
+                        <div class="img-content">
+                            <img src="../assets/sandwhich.png" class="h-100 w-100">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="food-lists">
+        <div class="food d-flex justify-content-between">
+            <div class="title">
+                <p>Food Lists</p>
+            </div>
+            <div class="edit d-flex justify-content-evenly">
+                <div class="search">
+                    <input type="text" placeholder="Enter food name" [(ngModel)]="this.searchvalue" (keyup)="search($event)">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  
+                </div>
+                <div class="btn-list">
+
+                    <div class="filter-logo" (click)="toggle()">
+                        <i class="fa fa-filter" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="dropdown_menus" [ngClass]="togglebool ? 'dropmenu_active': 'none'">
+                        <ul>
+                            <li (click)="toggleclose(1)">
+                                <div class="d-flex align-items-center">veg only <i class="fa fa-caret-down mx-2"
+                                        [ngClass]="vegpricelist ? 'arrow_rotation' : 'normal'" aria-hidden="true"></i>
+                                </div>
+                                <div [ngClass]="vegpricelist ? 'drop-down_active': 'none'" class="price-list">
+                                    <ul>
+                                        <li (click)="filterlist('veg',0)">Cost: From Low to High </li>
+                                        <li (click)="filterlist('veg',1)">Cost: From High to Low </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li (click)="toggleclose(2)">
+                                <div class="d-flex align-items-center">Non-veg only <i class="fa fa-caret-down mx-2"
+                                        [ngClass]="nonvegpricelist ? 'arrow_rotation' : 'normal'"
+                                        aria-hidden="true"></i></div>
+                                <div [ngClass]="nonvegpricelist ? 'drop-down_active': 'none'" class="price-list">
+                                    <ul>
+                                        <li (click)="filterlist('non-veg',0)">Cost: From Low to High </li>
+                                        <li (click)="filterlist('non-veg',1)">Cost: From High to Low </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li (click)="toggleclose(3)">
+                                <div class="d-flex align-items-center">Both veg and Non-veg <i
+                                        class="fa fa-caret-down mx-2"
+                                        [ngClass]="Bothpricelist ? 'arrow_rotation' : 'normal'" aria-hidden="true"></i>
+                                </div>
+                                <div [ngClass]="Bothpricelist ? 'drop-down_active': 'none'" class="price-list">
+                                    <ul>
+                                        <li (click)="filterlist('both',0)">Cost: From Low to High </li>
+                                        <li (click)="filterlist('both',1)">Cost: From High to Low </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="cart" (click)="vieworder()">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </div>
+
+            </div>
+
+
+        </div>
+<!-- Below grid is container for showing the menu list -->
+        <div *ngIf="issearchnotlist==false && displaylist.length>0 else other_container" class="grid-container">
+            <div class="product-container"  *ngFor="let product of displaylist">
+                <!-- <img class="categoryshowing"  [src]="product.category == 'veg' ? '../assets/button.png': '../assets/round.png'"> -->
+                <div class="categoryshowing" [ngClass]="product.category == 'veg'? 'categorytype2' : 'categorytype1'">{{product.category}}</div>
+                <img [src]="product.image_data" class="product-img">
+                <div class="product-name">
+                    <h6>{{product.name}}</h6>
+                </div>
+                <div class="price">
+                    ₹{{product.price}}
+                </div>
+                <div class="quantity">
+                    Quantity
+                    <div class="size">
+                        <div class="operation" (click)="quantityoperation(product.id,'-')">-</div>
+                        <div>{{product.quantity}}</div>
+                        <div class="operation" (click)="quantityoperation(product.id,'+')">+</div>
+                    </div>
+                </div>
+                <div class="submit-btn" (click)="placeorder(product)">
+                    Add to cart
+                </div>
+                <!-- <div class="rating">
+                    {{product.rating}}
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div> -->
+
+            </div>
+         
+        </div>
+
+     <ng-template #other_container>
+<div class="placeholdervalue">
+    <h5>Sorry search result is not found</h5>
+</div>
+     </ng-template>
+    </div>
+
+    <!-- Mobile view only for displaying total and cart for friendly responsiveness -->
+
+    <div class="footer-viewcart">
+          <div class="footer-btn" (click)="vieworder()">View cart  <i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+          <div class="footer-price">Total({{totalrate}})</div>  
+    </div>
+</div>

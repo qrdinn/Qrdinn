@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/cdk/overlay-prebuilt.css';
+@use '@angular/material' as mat;
+@include cdk.overlay();
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+:root{
+    --base-clr:linear-gradient(90deg, rgba(243,246,246,1) 0%, rgba(253,187,45,1) 100%);
+    --base-clr1:#410445;
+    --base-clr2:rgba(253,187,45,0.5);
+    --button-clr:linear-gradient(90deg, rgba(2, 132, 134, 1) 0%, rgba(253, 187, 45, 1) 100%)
+    --line-clr:#42434a;
+    --hover-clr:rgba(253,187,45,0.5);
+    --text-clr:black;
+    --accent-clr:#5e63ff;
+    --secondary-text-clr:#b0b3c1;
+    --empty-color:#f9dc83;
+    --base-empty-color:rgb(255, 255, 255);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  }
+
+ 
+  
