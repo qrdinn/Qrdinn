@@ -244,7 +244,6 @@ nav li {
 .dialogclass{
     border-radius: 40px;
 }
-
 .img-content{
     height: 70%;
     width: 30%;
@@ -267,7 +266,6 @@ nav li {
 .product-name, .price, .quantity{
     font-size: 14px;
 }
-
 .quantity{
    display: flex;
    justify-content: space-between; 
@@ -290,7 +288,6 @@ nav li {
 .footer-viewcart{
     display: none;
 }
-
 @media  (max-width:1070px) and (min-width:800px){
     .grid-container{
         grid-template-columns: 35% 35%;
@@ -325,8 +322,7 @@ nav li {
     }
 }
 
-@media(max-width:420px){
- 
+@media(max-width:420px){ 
     .food{
         margin-top: 10%;
     }

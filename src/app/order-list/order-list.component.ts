@@ -124,7 +124,7 @@ export class OrderListComponent implements OnInit {
   }
 
   getList() {
-    this.service.getfoodlist(1).subscribe((res: any) => {
+    this.service.getfoodlist("81d7e7da-81ae-4d0b-8bf8-49764af11519").subscribe((res: any) => {
       res.data.forEach((user: any) => {
         // user.image_data = 'data:image/png;base64,' + user.image_data
         user.quantity = 1;

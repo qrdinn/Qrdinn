@@ -17,7 +17,7 @@ export class FoodListService {
     return totalrate
   }
 
-  getfoodlist(useid:number){
+  getfoodlist(useid:string){
     let queryObject = {
       "user_id":useid
     }
