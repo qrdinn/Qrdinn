@@ -192,8 +192,10 @@ this.issearchnotlist = true;
   // Dialogbox for viewing the cart
   vieworder() {
     let dialog = this.dialog.open(OrderViewComponent, { height: '500px', width: '450px', disableClose: true, hasBackdrop: true, data: this.orderitem })
-  dialog.afterClosed().subscribe(()=>{
- 
+  dialog.afterClosed().subscribe((data)=>{
+ if(data.res == 1){
+this.commonsnackbar("Your order placed successfully")
+ }
 //  (MOBILE VIEW Footer) this below condition is the purpose for when i delete the item in the cart,After I close the cart, I need to sum the rest of items and display in the main view else if there is no item display zero only
     this.totalrate = this.orderitem.length >0 ? this.service.addingtotalorder(this.orderitem) : 0;
   })
@@ -214,7 +216,11 @@ this.issearchnotlist = true;
     }
     this.totalrate = this.service.addingtotalorder(this.orderitem);
     console.log(this.orderitem)
-    this.snackbar.open("Cart Added successfully", "", {
+ this.commonsnackbar("Cart Added successfully");
+  }
+
+  commonsnackbar(stringval:string){
+    this.snackbar.open(stringval, "", {
       duration: 2000,
       panelClass: ["custom-snackbar"]
     });

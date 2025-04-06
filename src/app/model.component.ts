@@ -20,3 +20,13 @@ export interface ordereditem{
     img:string;
     name:string
 }
+
+export interface submittedorder{
+    user_id:string,    
+    table_id:number, 
+    items:items[]
+}
+export interface items{
+    fooditem_id:number,
+    quantity:number,
+}

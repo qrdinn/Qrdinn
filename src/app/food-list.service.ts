@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ordereditem } from './model.component';
+import { items, ordereditem, submittedorder } from './model.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +25,26 @@ export class FoodListService {
     return this.http.post('https://qrdinn.pythonanywhere.com/api/menu',queryObject)
   }
 
-  updateorder(order:ordereditem[]){
-    return this.http.post('https://karthi9150.pythonanywhere.com/api/submitorder',order)
+
+  updateorder(order: ordereditem[]) {
+   
+    let finalsubmission = [];
+    let listitem:items = {
+      fooditem_id: 0,
+      quantity: 0
+    }
+    for (let i = 0; i < order.length; i++) {
+      let duplicatevalue = Object.assign({},listitem)
+      duplicatevalue.fooditem_id = order[i].id;
+      duplicatevalue.quantity = order[i].quantity;
+      finalsubmission.push(duplicatevalue)
+    }
+    let submittedvalue: submittedorder = {
+      user_id: "81d7e7da-81ae-4d0b-8bf8-49764af11519",      
+      table_id: 1,     
+      items: finalsubmission
+    };
+
+    return this.http.post('http://qrdinn.pythonanywhere.com/api/menu/completeorder', submittedvalue)
   }
 }

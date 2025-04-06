@@ -28,8 +28,11 @@ export class OrderViewComponent implements OnInit {
   }
 
   placeorder() {
-    this.service.updateorder(this.totalorder).subscribe((res) => {
-
+    this.service.updateorder(this.totalorder).subscribe((res:any) => {
+if(res.status == 'success'){
+this.totalorder = [];
+this.dialogref.close({res:1});
+}
     })
   }
   deleteitem(id:number){
