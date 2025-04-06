@@ -193,7 +193,7 @@ this.issearchnotlist = true;
   vieworder() {
     let dialog = this.dialog.open(OrderViewComponent, { height: '500px', width: '450px', disableClose: true, hasBackdrop: true, data: this.orderitem })
   dialog.afterClosed().subscribe((data)=>{
- if(data.res == 1){
+ if(data && data.res == 1){
 this.commonsnackbar("Your order placed successfully")
  }
 //  (MOBILE VIEW Footer) this below condition is the purpose for when i delete the item in the cart,After I close the cart, I need to sum the rest of items and display in the main view else if there is no item display zero only

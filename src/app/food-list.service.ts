@@ -45,6 +45,6 @@ export class FoodListService {
       items: finalsubmission
     };
 
-    return this.http.post('http://qrdinn.pythonanywhere.com/api/menu/completeorder', submittedvalue)
+    return this.http.post('https://qrdinn.pythonanywhere.com/api/menu/completeorder', submittedvalue)
   }
 }
