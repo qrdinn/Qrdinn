@@ -17,8 +17,12 @@ export class FoodListService {
     return totalrate
   }
 
-  getfoodlist(){
-    return this.http.get('http://karthi9150.pythonanywhere.com/api/orders')
+  getfoodlist(useid:number){
+    let queryObject = {
+      "user_id":useid
+    }
+
+    return this.http.post('https://qrdinn.pythonanywhere.com/api/menu',queryObject)
   }
 
   updateorder(order:ordereditem[]){

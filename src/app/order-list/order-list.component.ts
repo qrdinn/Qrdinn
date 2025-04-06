@@ -26,7 +26,7 @@ export class OrderListComponent implements OnInit {
       id: 0,
       name: 'Pizza',
       quantity: 1,
-      category: 'veg'
+      category: 1
     },
     {
       price: 200,
@@ -35,7 +35,7 @@ export class OrderListComponent implements OnInit {
       id: 1,
       name: 'Burger',
       quantity: 1,
-      category: 'non-veg'
+      category: 1
     },
     {
       price: 300,
@@ -44,7 +44,7 @@ export class OrderListComponent implements OnInit {
       id: 2,
       name: 'Pizza',
       quantity: 1,
-      category: 'veg'
+      category: 1
     },
     {
       price: 400,
@@ -53,7 +53,7 @@ export class OrderListComponent implements OnInit {
       id: 3,
       name: 'Pizza',
       quantity: 1,
-      category: 'non-veg'
+      category: 1
     },
     {
       price: 500,
@@ -62,7 +62,7 @@ export class OrderListComponent implements OnInit {
       id: 4,
       name: 'Pizza',
       quantity: 1,
-      category: 'veg'
+      category: 1
     },
     {
       price: 600,
@@ -71,7 +71,7 @@ export class OrderListComponent implements OnInit {
       id: 5,
       name: 'Pizza',
       quantity: 1,
-      category: 'non-veg'
+      category: 1
     },
     {
       price: 400,
@@ -80,7 +80,7 @@ export class OrderListComponent implements OnInit {
       id: 6,
       name: 'Pizza',
       quantity: 1,
-      category: 'veg'
+      category: 1
     },
     {
       price: 300,
@@ -89,7 +89,7 @@ export class OrderListComponent implements OnInit {
       id: 7,
       name: 'Pizza',
       quantity: 1,
-      category: 'non-veg'
+      category: 1
     }
   ]
   displaylist: product[] = [];
@@ -100,8 +100,7 @@ export class OrderListComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    // this.getList();
-    this.assigninglist();
+    this.getList();    
   }
 
 
@@ -125,13 +124,14 @@ export class OrderListComponent implements OnInit {
   }
 
   getList() {
-    this.service.getfoodlist().subscribe((res: any) => {
+    this.service.getfoodlist(1).subscribe((res: any) => {
       res.data.forEach((user: any) => {
-        user.image_data = 'data:image/png;base64,' + user.image_data
+        // user.image_data = 'data:image/png;base64,' + user.image_data
         user.quantity = 1;
 
       })
-      this.productlist = res.data
+      this.productlist = res.data;
+      this.assigninglist();
     })
   }
   //  Performing operation for increment and decrement in the quantity
@@ -156,8 +156,8 @@ export class OrderListComponent implements OnInit {
   }
 
   // Filter the list and display according to that category
-  filterlist(category: string, numcheck: number) {
-    if (category == 'both') {
+  filterlist(category: number, numcheck: number) {
+    if (category == 0) {
       this.displaylist = this.productlist.sort((a: any, b: any) => {
         if (numcheck == 0) {
           return a.price - b.price;

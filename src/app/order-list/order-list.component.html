@@ -88,8 +88,8 @@
                                 </div>
                                 <div [ngClass]="vegpricelist ? 'drop-down_active': 'none'" class="price-list">
                                     <ul>
-                                        <li (click)="filterlist('veg',0)">Cost: From Low to High </li>
-                                        <li (click)="filterlist('veg',1)">Cost: From High to Low </li>
+                                        <li (click)="filterlist(1,0)">Cost: From Low to High </li>
+                                        <li (click)="filterlist(1,1)">Cost: From High to Low </li>
                                     </ul>
                                 </div>
                             </li>
@@ -99,8 +99,8 @@
                                         aria-hidden="true"></i></div>
                                 <div [ngClass]="nonvegpricelist ? 'drop-down_active': 'none'" class="price-list">
                                     <ul>
-                                        <li (click)="filterlist('non-veg',0)">Cost: From Low to High </li>
-                                        <li (click)="filterlist('non-veg',1)">Cost: From High to Low </li>
+                                        <li (click)="filterlist(2,0)">Cost: From Low to High </li>
+                                        <li (click)="filterlist(2,1)">Cost: From High to Low </li>
                                     </ul>
                                 </div>
                             </li>
@@ -111,8 +111,8 @@
                                 </div>
                                 <div [ngClass]="Bothpricelist ? 'drop-down_active': 'none'" class="price-list">
                                     <ul>
-                                        <li (click)="filterlist('both',0)">Cost: From Low to High </li>
-                                        <li (click)="filterlist('both',1)">Cost: From High to Low </li>
+                                        <li (click)="filterlist(0,0)">Cost: From Low to High </li>
+                                        <li (click)="filterlist(0,1)">Cost: From High to Low </li>
                                     </ul>
                                 </div>
                             </li>
@@ -130,10 +130,10 @@
 
         </div>
 <!-- Below grid is container for showing the menu list -->
-        <div *ngIf="issearchnotlist==false && displaylist.length>0 else other_container" class="grid-container">
+        <div *ngIf="issearchnotlist==false || displaylist.length>0 else other_container" class="grid-container">
             <div class="product-container"  *ngFor="let product of displaylist">
                 <!-- <img class="categoryshowing"  [src]="product.category == 'veg' ? '../assets/button.png': '../assets/round.png'"> -->
-                <div class="categoryshowing" [ngClass]="product.category == 'veg'? 'categorytype2' : 'categorytype1'">{{product.category}}</div>
+                <div class="categoryshowing" [ngClass]="product.category == 1 ? 'categorytype2' : 'categorytype1'">{{ product.category == 1 ? "veg" : "non-veg"}}</div>
                 <img [src]="product.image_data" class="product-img">
                 <div class="product-name">
                     <h6>{{product.name}}</h6>

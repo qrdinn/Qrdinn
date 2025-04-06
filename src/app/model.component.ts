@@ -5,7 +5,7 @@ export interface product{
     id:number;
     name:string;
     quantity:number
-    category:string
+    category:number
 }
 export interface carousel{
     img:string;
