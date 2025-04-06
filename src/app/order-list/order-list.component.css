@@ -288,10 +288,8 @@ nav li {
     justify-content: center;
 }
 .footer-viewcart{
-
     display: none;
 }
-
 
 @media  (max-width:1070px) and (min-width:800px){
     .grid-container{
@@ -377,6 +375,3 @@ nav li {
     }
 }
 
-.mat-snack-bar-container {
-    font-size: 12px !important;
-  }
