@@ -96,6 +96,7 @@ export class OrderListComponent implements OnInit {
   searchvalue: string = ''
   totalrate:number = 0;
   issearchnotlist:boolean = false
+  loader:boolean = false;
   constructor(private dialog: MatDialog, private snackbar: MatSnackBar, private service: FoodListService) {
 
   }
@@ -107,6 +108,7 @@ export class OrderListComponent implements OnInit {
  
   //below function is for assigning list after the duplication the list because need to take reference for the purpose of filter 
   assigninglist() {
+    this.loader = false;
     this.displaylist = JSON.parse(JSON.stringify(this.productlist));
   }
   toggle() {
@@ -124,6 +126,7 @@ export class OrderListComponent implements OnInit {
   }
 
   getList() {
+    this.loader = true;
     this.service.getfoodlist("81d7e7da-81ae-4d0b-8bf8-49764af11519").subscribe((res: any) => {
       res.data.forEach((user: any) => {
         // user.image_data = 'data:image/png;base64,' + user.image_data

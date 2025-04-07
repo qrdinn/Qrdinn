@@ -288,6 +288,10 @@ nav li {
 .footer-viewcart{
     display: none;
 }
+.loader-frame{
+    height: 200px;
+    
+}
 @media  (max-width:1070px) and (min-width:800px){
     .grid-container{
         grid-template-columns: 35% 35%;
@@ -310,6 +314,7 @@ nav li {
 @media(max-width:560px){
     .grid-container{
         grid-template-columns: 70%;
+        padding-bottom: 20%;
     }
     .edit{
         width: 70%;
@@ -320,11 +325,20 @@ nav li {
     .carousel{
         height: 35%;
     }
+    .loader-frame{
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media(max-width:420px){ 
     .food{
         margin-top: 10%;
+    }
+    .content{
+        font-size: 12px;
     }
     .search{
         height: 80%;
@@ -351,11 +365,12 @@ nav li {
     .footer-viewcart{
         height: 60px;
         width: 100%;
-        position: sticky;
-        top: 100%;
+        position: fixed;
+        top: 92%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+ 
     }
     .footer-btn{
         background: #eb1600;
@@ -368,6 +383,13 @@ nav li {
         cursor: pointer;
         height: 60%;
         align-items: center;
+    }
+    .loader-frame{
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
     }
 }
 

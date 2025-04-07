@@ -16,23 +16,11 @@
                 <div class="carousel-item h-100 w-100  active">
                     <div class="carousel_content h-100 d-flex justify-content-around align-items-center">
                         <div class="content">
-                            <p style="color: white;">Make your World Juicy</p>
+                            <p style="color: white;">Scan to Explore the Menu</p>
 
                         </div>
-                        <div class="img-content">
-                            <img src="/assets/Burger.png" class="h-100 w-100">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item h-100 w-100">
-                    <div class="carousel_content h-100 d-flex justify-content-around align-items-center">
-                        <div class="content">
-                            <p style="color: white;">Make your taste with Spicy and sticky withyour delicy sause</p>
-
-                        </div>
-                        <div class="img-content">
-                            <img src="/assets/frenchfries.png" class="h-100 w-100">
+                        <div class="img-content" class="h-50">
+                            <img src="assets/Qrcode.jpg" class="h-100 w-100">
 
                         </div>
                     </div>
@@ -40,11 +28,24 @@
                 <div class="carousel-item h-100 w-100">
                     <div class="carousel_content h-100 d-flex justify-content-around align-items-center">
                         <div class="content">
-                            <p style="color: white;">Make your enjoy with different flavours</p>
+                            <p style="color: white;">Dive into the Menu</p>
 
                         </div>
-                        <div class="img-content">
-                            <img src="/assets/sandwhich.png" class="h-100 w-100">
+                        <div class="img-content" class="h-50">
+                            <img src="assets/menu.jpg" class="h-100 w-100">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item h-100 w-100">
+                    <div class="carousel_content h-100 d-flex justify-content-around align-items-center">
+                        <div class="content">
+                            <p style="color: white;">Get It Delivered to Your Table</p>
+
+                        </div>
+                        <div class="img-content" class="h-50">
+                            <img src="
+                            assets/order_place.jpg" class="h-100 w-100">
 
                         </div>
                     </div>
@@ -171,11 +172,15 @@
 </div>
      </ng-template>
     </div>
-
+    <div class="text-center loader-frame" *ngIf="loader">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
     <!-- Mobile view only for displaying total and cart for friendly responsiveness -->
 
     <div class="footer-viewcart">
           <div class="footer-btn" (click)="vieworder()">View cart  <i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
-          <div class="footer-price">Total({{totalrate}})</div>  
+          <div class="footer-price">Total ₹({{totalrate}})</div>  
     </div>
 </div>
