@@ -23,7 +23,7 @@ export interface ordereditem{
 
 export interface submittedorder{
     user_id:string,    
-    table_id:number, 
+    table_id:string, 
     items:items[]
 }
 export interface items{

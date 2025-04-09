@@ -369,6 +369,7 @@ nav li {
         top: 92%;
         display: flex;
         align-items: center;
+        background: white;
         justify-content: space-evenly;
  
     }

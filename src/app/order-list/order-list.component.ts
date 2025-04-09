@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { fakeAsync } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { FoodListService } from '../food-list.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-list',
@@ -97,11 +98,16 @@ export class OrderListComponent implements OnInit {
   totalrate:number = 0;
   issearchnotlist:boolean = false
   loader:boolean = false;
-  constructor(private dialog: MatDialog, private snackbar: MatSnackBar, private service: FoodListService) {
+  userid:string ='';
+  tableid:string='';
+  constructor(private dialog: MatDialog, private snackbar: MatSnackBar, private service: FoodListService,private route: ActivatedRoute) {
 
   }
-  ngOnInit(): void {
+  ngOnInit(): void {  
+    this.userid = this.route.snapshot.paramMap.get('userid') ?? '';
+    this.tableid = this.route.snapshot.paramMap.get('tableid') ?? '';
     this.getList();    
+
   }
 
 
@@ -127,7 +133,7 @@ export class OrderListComponent implements OnInit {
 
   getList() {
     this.loader = true;
-    this.service.getfoodlist("81d7e7da-81ae-4d0b-8bf8-49764af11519").subscribe((res: any) => {
+    this.service.getfoodlist(this.userid).subscribe((res: any) => {
       res.data.forEach((user: any) => {
         // user.image_data = 'data:image/png;base64,' + user.image_data
         user.quantity = 1;
@@ -194,7 +200,7 @@ this.issearchnotlist = true;
 
   // Dialogbox for viewing the cart
   vieworder() {
-    let dialog = this.dialog.open(OrderViewComponent, { height: '500px', width: '450px', disableClose: true, hasBackdrop: true, data: this.orderitem })
+    let dialog = this.dialog.open(OrderViewComponent, { height: '500px', width: '450px', disableClose: true, hasBackdrop: true, data: {orderlist:this.orderitem,tableid:this.tableid} })
   dialog.afterClosed().subscribe((data)=>{
  if(data && data.res == 1){
 this.commonsnackbar("Your order placed successfully")

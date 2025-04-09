@@ -1,6 +1,7 @@
 {
   "name": "clientside",
   "version": "0.0.0",
+  "homepage": "https://qrdinn.github.io/Qrdinn",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

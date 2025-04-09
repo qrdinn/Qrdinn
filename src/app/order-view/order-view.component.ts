@@ -14,12 +14,13 @@ export class OrderViewComponent implements OnInit {
   quantity: number = 1;
   totalprice: number = 0;
   totalrate: number = 0;
-
-  constructor(private service: FoodListService, private dialogref: MatDialogRef<OrderViewComponent>, @Inject(MAT_DIALOG_DATA) private data: ordereditem[]) {
+ tableid:string=''
+  constructor(private service: FoodListService, private dialogref: MatDialogRef<OrderViewComponent>, @Inject(MAT_DIALOG_DATA) private data: {orderlist:ordereditem[],tableid:string}) {
 
   }
   ngOnInit(): void {
-    this.totalorder = this.data;
+    this.tableid = this.data.tableid??'';
+    this.totalorder = this.data.orderlist;
     this.totalrate = this.service.addingtotalorder(this.totalorder)
   }
 
@@ -28,7 +29,7 @@ export class OrderViewComponent implements OnInit {
   }
 
   placeorder() {
-    this.service.updateorder(this.totalorder).subscribe((res:any) => {
+    this.service.updateorder(this.totalorder,this.tableid).subscribe((res:any) => {
 if(res.status == 'success'){
 this.totalorder = [];
 this.dialogref.close({res:1});
