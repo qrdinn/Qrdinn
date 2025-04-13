@@ -31,7 +31,6 @@ export class OrderViewComponent implements OnInit {
   placeorder() {
     this.service.updateorder(this.totalorder,this.tableid).subscribe((res:any) => {
 if(res.status == 'success'){
-this.totalorder = [];
 this.dialogref.close({res:1});
 }
     })

@@ -1,0 +1,42 @@
+.errordisplaying{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.message{
+    height: 40%;
+    width: 40%;
+display: flex;
+align-items: center;
+flex-direction: column;
+
+}
+.sad{
+font-size: 90px;
+}
+.successmsg{
+    color: green;
+    margin-top: 4%;
+}
+
+.submit-btn{
+    background: #eb1600;
+    color: white;
+    font-size: 14px;
+    height: 20%;
+    width: 40%;
+    display: flex
+;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    align-items: center;
+    position: relative;
+    left: 0%;
+    margin-top: 4%;
+}
+.tick{
+    height: 50%;
+}

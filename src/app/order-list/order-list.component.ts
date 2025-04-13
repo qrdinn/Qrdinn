@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { fakeAsync } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { FoodListService } from '../food-list.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-list',
@@ -100,7 +100,7 @@ export class OrderListComponent implements OnInit {
   loader:boolean = false;
   userid:string ='';
   tableid:string='';
-  constructor(private dialog: MatDialog, private snackbar: MatSnackBar, private service: FoodListService,private route: ActivatedRoute) {
+  constructor(private dialog: MatDialog, private snackbar: MatSnackBar, private service: FoodListService,private route: ActivatedRoute, private route1:Router) {
 
   }
   ngOnInit(): void {  
@@ -203,8 +203,9 @@ this.issearchnotlist = true;
     let dialog = this.dialog.open(OrderViewComponent, { height: '500px', width: '450px', disableClose: true, hasBackdrop: true, data: {orderlist:this.orderitem,tableid:this.tableid} })
   dialog.afterClosed().subscribe((data)=>{
  if(data && data.res == 1){
-this.commonsnackbar("Your order placed successfully")
- }
+  this.orderitem = [];
+this.route1.navigate(['/success']);
+}
 //  (MOBILE VIEW Footer) this below condition is the purpose for when i delete the item in the cart,After I close the cart, I need to sum the rest of items and display in the main view else if there is no item display zero only
     this.totalrate = this.orderitem.length >0 ? this.service.addingtotalorder(this.orderitem) : 0;
   })

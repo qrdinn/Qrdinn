@@ -10,11 +10,13 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {HttpClientModule} from '@angular/common/http'
 import { LocationStrategy,HashLocationStrategy } from '@angular/common';
+import { OrdersuccessComponent } from './ordersuccess/ordersuccess.component';
 @NgModule({
   declarations: [
     AppComponent,
     OrderListComponent,
-    OrderViewComponent
+    OrderViewComponent,
+    OrdersuccessComponent
   ],
   imports: [
     BrowserModule,
