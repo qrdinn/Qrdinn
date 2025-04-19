@@ -100,6 +100,7 @@ export class OrderListComponent implements OnInit {
   loader:boolean = false;
   userid:string ='';
   tableid:string='';
+  companyname:string='';
   constructor(private dialog: MatDialog, private snackbar: MatSnackBar, private service: FoodListService,private route: ActivatedRoute, private route1:Router) {
 
   }
@@ -137,7 +138,7 @@ export class OrderListComponent implements OnInit {
       res.data.forEach((user: any) => {
         // user.image_data = 'data:image/png;base64,' + user.image_data
         user.quantity = 1;
-
+       this.companyname = user.cname
       })
       this.productlist = res.data;
       this.assigninglist();
