@@ -26,7 +26,7 @@ export class FoodListService {
   }
 
 
-  updateorder(order: ordereditem[],tableid:string) {
+  updateorder(order: ordereditem[],tableid:string, userid:string) {
    
     let finalsubmission = [];
     let listitem:items = {
@@ -40,7 +40,7 @@ export class FoodListService {
       finalsubmission.push(duplicatevalue)
     }
     let submittedvalue: submittedorder = {
-      user_id: "81d7e7da-81ae-4d0b-8bf8-49764af11519",      
+      user_id: userid,      
       table_id: tableid,     
       items: finalsubmission
     };

@@ -200,7 +200,7 @@ this.issearchnotlist = true;
 
   // Dialogbox for viewing the cart
   vieworder() {
-    let dialog = this.dialog.open(OrderViewComponent, { height: '500px', width: '450px', disableClose: true, hasBackdrop: true, data: {orderlist:this.orderitem,tableid:this.tableid} })
+    let dialog = this.dialog.open(OrderViewComponent, { height: '500px', width: '450px', disableClose: true, hasBackdrop: true, data: {orderlist:this.orderitem,tableid:this.tableid, userid:this.userid} })
   dialog.afterClosed().subscribe((data)=>{
  if(data && data.res == 1){
   this.orderitem = [];

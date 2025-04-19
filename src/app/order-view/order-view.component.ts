@@ -14,13 +14,15 @@ export class OrderViewComponent implements OnInit {
   quantity: number = 1;
   totalprice: number = 0;
   totalrate: number = 0;
- tableid:string=''
-  constructor(private service: FoodListService, private dialogref: MatDialogRef<OrderViewComponent>, @Inject(MAT_DIALOG_DATA) private data: {orderlist:ordereditem[],tableid:string}) {
+  tableid: string = ''
+  userid: string = ''
+  constructor(private service: FoodListService, private dialogref: MatDialogRef<OrderViewComponent>, @Inject(MAT_DIALOG_DATA) private data: { orderlist: ordereditem[], tableid: string, userid: string }) {
 
   }
   ngOnInit(): void {
-    this.tableid = this.data.tableid??'';
+    this.tableid = this.data.tableid ?? '';
     this.totalorder = this.data.orderlist;
+    this.userid = this.data.userid;
     this.totalrate = this.service.addingtotalorder(this.totalorder)
   }
 
@@ -29,17 +31,17 @@ export class OrderViewComponent implements OnInit {
   }
 
   placeorder() {
-    this.service.updateorder(this.totalorder,this.tableid).subscribe((res:any) => {
-if(res.status == 'success'){
-this.dialogref.close({res:1});
-}
+    this.service.updateorder(this.totalorder, this.tableid, this.userid).subscribe((res: any) => {
+      if (res.status == 'success') {
+        this.dialogref.close({ res: 1 });
+      }
     })
   }
-  deleteitem(id:number){
-    let index = this.totalorder.findIndex((a)=>a.id == id);
-    this.totalorder.splice(index,1);
+  deleteitem(id: number) {
+    let index = this.totalorder.findIndex((a) => a.id == id);
+    this.totalorder.splice(index, 1);
     this.totalrate = this.service.addingtotalorder(this.totalorder);
-   
+
   }
 
 }
